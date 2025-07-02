@@ -63,10 +63,17 @@ function dragElement(terrariumElement) {
 function elementDblClick(terrariumElement) {
     terrariumElement.ondblclick = function() {
         // toggle z-index to bring the element to the front
-        if (terrariumElement.style.zIndex === "3") {
-            terrariumElement.style.zIndex = "2";
+        if (terrariumElement.style.zIndex === "2") {
+            terrariumElement.style.zIndex = "1000";
         } else {
-            terrariumElement.style.zIndex = "3";
+            terrariumElement.style.zIndex = "1000";
         }
+        // change the z-index of all other elements to 2
+        const allElements = document.querySelectorAll('.plant');
+        allElements.forEach(function(el) {
+            if (el !== terrariumElement) {
+                el.style.zIndex = "2";
+            }
+        });
     }
 }
